@@ -31,7 +31,9 @@ input,textarea,button{font-family:inherit}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .marquee{display:flex;width:max-content;animation:marquee 38s linear infinite}
 @keyframes shimmer{0%{background-position:0% 50%}100%{background-position:200% 50%}}
-.goldtext{background:linear-gradient(90deg,#E3A23F,#FFD58A,#E3A23F,#B97A22,#E3A23F);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 6s linear infinite}
+:root{--neon:0 0 .04em #FFFFFF,0 0 .12em #FFF6B0,0 0 .3em #FFE14D,0 0 .6em #FFD000,0 0 1.1em rgba(255,200,0,.55);--neon-max:0 0 .04em #FFFFFF,0 0 .15em #FFF6B0,0 0 .38em #FFE14D,0 0 .75em #FFD000,0 0 1.4em rgba(255,200,0,.7)}
+.goldtext{color:#FFFFFF;text-shadow:var(--neon);animation:neonhum 4s ease-in-out infinite}
+@keyframes neonhum{0%,100%{text-shadow:var(--neon)}50%{text-shadow:var(--neon-max)}}
 @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 .rise{animation:rise 1s cubic-bezier(.2,.8,.2,1) both}
 @keyframes reveal{from{opacity:0;transform:translateY(56px) scale(.98)}to{opacity:1;transform:none}}
@@ -46,7 +48,7 @@ input,textarea,button{font-family:inherit}
 .field:focus{outline:none;border-color:#E3A23F;box-shadow:0 0 0 4px rgba(227,162,63,.2)}
 .btn{transition:transform .3s,box-shadow .3s}
 .btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px -10px rgba(227,162,63,.65)}
-.navlink{transition:color .3s}.navlink:hover{color:#E3A23F}
+.navlink{transition:color .3s,text-shadow .3s}.navlink:hover{color:#FFFFFF;text-shadow:var(--neon)}
 .slat-demo{transform-box:fill-box;transform-origin:center;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
 .gridbg{background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:64px 64px}
 @keyframes cue{0%{transform:translateY(-6px);opacity:0}35%{opacity:1}100%{transform:translateY(22px);opacity:0}}
@@ -87,7 +89,7 @@ input,textarea,button{font-family:inherit}
 <div aria-hidden="true" style="width: 1px; height: 56px; overflow: hidden;"><div class="cue-line" style="width: 1px; height: 28px; background: #E3A23F;"></div></div>
 </div>
 <div id="heroCopy" style="position: relative; height: 100%; max-width: 1240px; margin: 0 auto; padding: 0 24px 11vh; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-end; gap: 24px; opacity: 0; transform: translateY(40px); pointer-events: none; transition: opacity 1s ease, transform 1s cubic-bezier(.2,.8,.2,1);">
-<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #E3A23F;">Pérgolas bioclimáticas · Oficina técnica</p>
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #FFFFFF; text-shadow: var(--neon);">Pérgolas bioclimáticas · Oficina técnica</p>
 <h1 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: clamp(56px, 8vw, 112px); line-height: 0.95; letter-spacing: -3px;">Domina el <span class="goldtext" style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -1px;">sol.</span></h1>
 <p style="margin: 0; font-size: 20px; line-height: 1.6; color: #D6D2C9; max-width: 560px;">Lamas orientables que se abren, se cierran y se ajustan a la hora del día. Calculadas para tu orientación, tu clima y tu terraza.</p>
 <div style="display: flex; flex-wrap: wrap; gap: 12px;">
@@ -100,8 +102,8 @@ input,textarea,button{font-family:inherit}
 
 <div aria-hidden="true" style="border-top: 1px solid #1E1F22; border-bottom: 1px solid #1E1F22; background: #0F0F11; padding: 22px 0; overflow: hidden;">
 <div class="marquee" style="gap: 48px; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 28px; font-weight: 500; color: #3E4044; white-space: nowrap;">
-<span>Sombra</span><span style="color: #E3A23F;">✦</span><span>Ventilación</span><span style="color: #E3A23F;">✦</span><span>Lluvia</span><span style="color: #E3A23F;">✦</span><span>CTE DB-SE-AE</span><span style="color: #E3A23F;">✦</span><span>UNE 157001</span><span style="color: #E3A23F;">✦</span><span>Lamas de 0° a 120°</span><span style="color: #E3A23F;">✦</span><span>Todo el año</span><span style="color: #E3A23F;">✦</span>
-<span>Sombra</span><span style="color: #E3A23F;">✦</span><span>Ventilación</span><span style="color: #E3A23F;">✦</span><span>Lluvia</span><span style="color: #E3A23F;">✦</span><span>CTE DB-SE-AE</span><span style="color: #E3A23F;">✦</span><span>UNE 157001</span><span style="color: #E3A23F;">✦</span><span>Lamas de 0° a 120°</span><span style="color: #E3A23F;">✦</span><span>Todo el año</span><span style="color: #E3A23F;">✦</span>
+<span>Sombra</span><span style="color: #FFFFFF; text-shadow: var(--neon);">✦</span><span>Ventilación</span><span style="color: #FFFFFF; text-shadow: var(--neon);">✦</span><span>Lluvia</span><span style="color: #FFFFFF; text-shadow: var(--neon);">✦</span><span>CTE DB-SE-AE</span><span style="color: #FFFFFF; text-shadow: var(--neon);">✦</span><span>UNE 157001</span><span style="color: #FFFFFF; text-shadow: var(--neon);">✦</span><span>Lamas de 0° a 120°</span><span style="color: #FFFFFF; text-shadow: var(--neon);">✦</span><span>Todo el año</span><span style="color: #FFFFFF; text-shadow: var(--neon);">✦</span>
+<span>Sombra</span><span style="color: #FFFFFF; text-shadow: var(--neon);">✦</span><span>Ventilación</span><span style="color: #FFFFFF; text-shadow: var(--neon);">✦</span><span>Lluvia</span><span style="color: #FFFFFF; text-shadow: var(--neon);">✦</span><span>CTE DB-SE-AE</span><span style="color: #FFFFFF; text-shadow: var(--neon);">✦</span><span>UNE 157001</span><span style="color: #FFFFFF; text-shadow: var(--neon);">✦</span><span>Lamas de 0° a 120°</span><span style="color: #FFFFFF; text-shadow: var(--neon);">✦</span><span>Todo el año</span><span style="color: #FFFFFF; text-shadow: var(--neon);">✦</span>
 </div>
 </div>
 
@@ -111,7 +113,7 @@ input,textarea,button{font-family:inherit}
 <video data-loop="1" class="clip" src="./assets/5292610dbbc5ddd7dfb4b9c8eb343903.mp4" poster="./assets/4d5f582b61e90376c3b09d54d6434c08.jpg" preload="metadata" aria-label="Render: la cámara entra en la pérgola acristalada mientras las lamas se abren" style="width: 100%; max-width: 760px; height: auto; aspect-ratio: 16 / 9; border-radius: 18px;"></video>
 </div>
 <div style="flex: 2 1 320px; min-width: 0; padding: 48px 40px; display: flex; flex-direction: column; justify-content: center; gap: 28px; border-left: 1px solid #232428;">
-<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #E3A23F;">Proyecto de referencia</p>
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #FFFFFF; text-shadow: var(--neon);">Proyecto de referencia</p>
 <h2 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 38px; line-height: 1.1; letter-spacing: -1px;">Una terraza este en Pozuelo de Alarcón</h2>
 <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px;">
 <div><p style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 44px; font-weight: 700; line-height: 1;">18 m²</p><p style="margin: 6px 0 0; font-size: 15px; color: #8C8A85;">6 × 3 m cubiertos</p></div>
@@ -125,8 +127,8 @@ input,textarea,button{font-family:inherit}
 
 <section id="funciona" style="max-width: 1240px; margin: 0 auto; padding: 96px 24px;">
 <div class="reveal" style="display: flex; flex-direction: column; gap: 14px; max-width: 760px; margin-bottom: 48px;">
-<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #E3A23F;">Cómo funciona</p>
-<h2 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: clamp(36px, 5vw, 60px); line-height: 1.02; letter-spacing: -2px;">Tres efectos con un <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #E3A23F;">solo gesto.</span></h2>
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #FFFFFF; text-shadow: var(--neon);">Cómo funciona</p>
+<h2 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: clamp(36px, 5vw, 60px); line-height: 1.02; letter-spacing: -2px;">Tres efectos con un <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #FFFFFF; text-shadow: var(--neon);">solo gesto.</span></h2>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: stretch;">
 <div class="reveal" style="flex: 1 1 520px; min-width: 0; background: #141517; border: 1px solid #232428; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 24px;">
@@ -149,15 +151,15 @@ input,textarea,button{font-family:inherit}
 </div>
 <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
 <div class="reveal card" style="background: #141517; border: 1px solid #232428; border-radius: 20px; padding: 28px; display: flex; gap: 20px; align-items: flex-start;">
-<span style="font-family: 'Space Grotesk', Arial, sans-serif; font-size: 15px; font-weight: 700; color: #E3A23F; padding-top: 4px;">01</span>
+<span style="font-family: 'Space Grotesk', Arial, sans-serif; font-size: 15px; font-weight: 700; color: #FFFFFF; text-shadow: var(--neon); padding-top: 4px;">01</span>
 <div style="display: flex; flex-direction: column; gap: 6px;"><h3 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 22px;">Sombreamiento</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #B9B6AE;">Las lamas bloquean la radiación directa: menos calor sin renunciar a la luz.</p></div>
 </div>
 <div class="reveal card" style="background: #141517; border: 1px solid #232428; border-radius: 20px; padding: 28px; display: flex; gap: 20px; align-items: flex-start;">
-<span style="font-family: 'Space Grotesk', Arial, sans-serif; font-size: 15px; font-weight: 700; color: #E3A23F; padding-top: 4px;">02</span>
+<span style="font-family: 'Space Grotesk', Arial, sans-serif; font-size: 15px; font-weight: 700; color: #FFFFFF; text-shadow: var(--neon); padding-top: 4px;">02</span>
 <div style="display: flex; flex-direction: column; gap: 6px;"><h3 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 22px;">Ventilación natural</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #B9B6AE;">Entreabiertas, dejan escapar el aire caliente por arriba: efecto chimenea.</p></div>
 </div>
 <div class="reveal card" style="background: #141517; border: 1px solid #232428; border-radius: 20px; padding: 28px; display: flex; gap: 20px; align-items: flex-start;">
-<span style="font-family: 'Space Grotesk', Arial, sans-serif; font-size: 15px; font-weight: 700; color: #E3A23F; padding-top: 4px;">03</span>
+<span style="font-family: 'Space Grotesk', Arial, sans-serif; font-size: 15px; font-weight: 700; color: #FFFFFF; text-shadow: var(--neon); padding-top: 4px;">03</span>
 <div style="display: flex; flex-direction: column; gap: 6px;"><h3 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 22px;">Protección frente a la lluvia</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #B9B6AE;">Cerradas, forman una cubierta estanca que lleva el agua al canalón.</p></div>
 </div>
 </div>
@@ -166,8 +168,8 @@ input,textarea,button{font-family:inherit}
 
 <section id="cinematica" style="max-width: 1240px; margin: 0 auto; padding: 104px 24px;">
 <div class="reveal" style="display: flex; flex-direction: column; gap: 14px; max-width: 820px; margin-bottom: 48px;">
-<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #E3A23F;">Render del proyecto</p>
-<h2 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: clamp(36px, 5vw, 60px); line-height: 1.02; letter-spacing: -2px;">Míralo antes de <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #E3A23F;">construirlo.</span></h2>
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #FFFFFF; text-shadow: var(--neon);">Render del proyecto</p>
+<h2 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: clamp(36px, 5vw, 60px); line-height: 1.02; letter-spacing: -2px;">Míralo antes de <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #FFFFFF; text-shadow: var(--neon);">construirlo.</span></h2>
 <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #8C8A85;">Fragmentos de la animación 3D del proyecto de referencia, al caer la tarde y con la iluminación LED de la pérgola encendida.</p>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px;">
@@ -185,8 +187,8 @@ input,textarea,button{font-family:inherit}
 <section id="ingenieria" style="background: #0F0F11; border-top: 1px solid #1E1F22; border-bottom: 1px solid #1E1F22;">
 <div style="max-width: 1240px; margin: 0 auto; padding: 104px 24px; display: flex; flex-direction: column; gap: 48px;">
 <div class="reveal" style="display: flex; flex-direction: column; gap: 14px; max-width: 820px;">
-<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #E3A23F;">Ingeniería, no catálogo</p>
-<h2 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: clamp(36px, 5vw, 60px); line-height: 1.02; letter-spacing: -2px;">Cada pérgola sale de un <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #E3A23F;">cálculo.</span></h2>
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #FFFFFF; text-shadow: var(--neon);">Ingeniería, no catálogo</p>
+<h2 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: clamp(36px, 5vw, 60px); line-height: 1.02; letter-spacing: -2px;">Cada pérgola sale de un <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #FFFFFF; text-shadow: var(--neon);">cálculo.</span></h2>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
 <div class="reveal card" style="background: #141517; border: 1px solid #232428; border-radius: 20px; padding: 30px; display: flex; flex-direction: column; gap: 12px;">
@@ -220,14 +222,14 @@ input,textarea,button{font-family:inherit}
 
 <section id="soluciones" style="max-width: 1240px; margin: 0 auto; padding: 104px 24px;">
 <div class="reveal" style="display: flex; flex-direction: column; gap: 14px; max-width: 820px; margin-bottom: 48px;">
-<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #E3A23F;">Soluciones</p>
-<h2 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: clamp(36px, 5vw, 60px); line-height: 1.02; letter-spacing: -2px;">Tres formas de cubrir <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #E3A23F;">una terraza.</span></h2>
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #FFFFFF; text-shadow: var(--neon);">Soluciones</p>
+<h2 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: clamp(36px, 5vw, 60px); line-height: 1.02; letter-spacing: -2px;">Tres formas de cubrir <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #FFFFFF; text-shadow: var(--neon);">una terraza.</span></h2>
 <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #8C8A85;">Precios orientativos del proyecto de referencia: 6 × 3 m, orientación este, IVA incluido.</p>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 20px;">
 <article class="reveal card" style="background: linear-gradient(180deg, #1C1A16 0%, #141517 60%); border: 1px solid #5A4520; border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 14px;">
 <div class="sheen" style="background: #0F0F11; border-radius: 16px; overflow: hidden;"><img class="zoom" src="./assets/bde967d3d04833cba675ae21f6db63eb.jpg" alt="Render: pérgola adosada con lamas orientables y cortinas de vidrio en los tres lados abiertos" style="width: 100%; height: 240px; object-fit: cover; display: block;"></div>
-<p style="margin: 6px 0 0; font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #E3A23F;">Todo el año · recomendada</p>
+<p style="margin: 6px 0 0; font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #FFFFFF; text-shadow: var(--neon);">Todo el año · recomendada</p>
 <h3 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 28px; letter-spacing: -0.5px;">Adosada acristalada</h3>
 <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #B9B6AE;">Lamas motorizadas y cortinas de vidrio plegables en los lados abiertos: abrigo frente al viento y la lluvia lateral.</p>
 <p style="margin: auto 0 0; padding-top: 12px; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 34px; font-weight: 700;">18.442 €</p>
@@ -252,8 +254,8 @@ input,textarea,button{font-family:inherit}
 <section id="proceso" style="background: #0F0F11; border-top: 1px solid #1E1F22; border-bottom: 1px solid #1E1F22;">
 <div style="max-width: 1240px; margin: 0 auto; padding: 104px 24px; display: flex; flex-direction: column; gap: 40px;">
 <div class="reveal" style="display: flex; flex-direction: column; gap: 14px; max-width: 820px;">
-<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #E3A23F;">Proceso</p>
-<h2 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: clamp(36px, 5vw, 60px); line-height: 1.02; letter-spacing: -2px;">De la primera visita <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #E3A23F;">al montaje.</span></h2>
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #FFFFFF; text-shadow: var(--neon);">Proceso</p>
+<h2 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: clamp(36px, 5vw, 60px); line-height: 1.02; letter-spacing: -2px;">De la primera visita <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #FFFFFF; text-shadow: var(--neon);">al montaje.</span></h2>
 </div>
 <div class="flowline" aria-hidden="true" style="height: 2px; border-radius: 2px;"></div>
 <ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
@@ -268,32 +270,32 @@ input,textarea,button{font-family:inherit}
 
 <section id="equipo" style="max-width: 1240px; margin: 0 auto; padding: 104px 24px;">
 <div class="reveal" style="display: flex; flex-direction: column; gap: 14px; max-width: 820px; margin-bottom: 48px;">
-<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #E3A23F;">Equipo</p>
-<h2 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: clamp(36px, 5vw, 60px); line-height: 1.02; letter-spacing: -2px;">Cuatro ingenieros, <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #E3A23F;">un responsable por parte.</span></h2>
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #FFFFFF; text-shadow: var(--neon);">Equipo</p>
+<h2 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: clamp(36px, 5vw, 60px); line-height: 1.02; letter-spacing: -2px;">Cuatro ingenieros, <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #FFFFFF; text-shadow: var(--neon);">un responsable por parte.</span></h2>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
 <div class="reveal card" style="background: #141517; border: 1px solid #232428; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 12px;">
 <div aria-hidden="true" style="width: 60px; height: 60px; border-radius: 999px; background: radial-gradient(circle at 30% 30%, #FFD58A, #E3A23F 55%, #8A5F14); color: #0A0A0B; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: 24px;">P</div>
 <h3 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 22px;">Pablo</h3>
-<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #E3A23F;">Dirección de proyecto</p>
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #FFFFFF; text-shadow: var(--neon);">Dirección de proyecto</p>
 <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #B9B6AE;">Coordina el equipo y vela por que todos los documentos digan lo mismo.</p>
 </div>
 <div class="reveal card" style="background: #141517; border: 1px solid #232428; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 12px;">
 <div aria-hidden="true" style="width: 60px; height: 60px; border-radius: 999px; background: radial-gradient(circle at 30% 30%, #FFD58A, #E3A23F 55%, #8A5F14); color: #0A0A0B; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: 24px;">D</div>
 <h3 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 22px;">Daniel</h3>
-<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #E3A23F;">Comercial y mercado</p>
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #FFFFFF; text-shadow: var(--neon);">Comercial y mercado</p>
 <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #B9B6AE;">Tu interlocutor: recoge lo que necesitas y lo compara con el mercado.</p>
 </div>
 <div class="reveal card" style="background: #141517; border: 1px solid #232428; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 12px;">
 <div aria-hidden="true" style="width: 60px; height: 60px; border-radius: 999px; background: radial-gradient(circle at 30% 30%, #FFD58A, #E3A23F 55%, #8A5F14); color: #0A0A0B; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: 24px;">S</div>
 <h3 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 22px;">Santiago</h3>
-<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #E3A23F;">Diseño y cálculo</p>
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #FFFFFF; text-shadow: var(--neon);">Diseño y cálculo</p>
 <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #B9B6AE;">Convierte tus requisitos en estructura, estudio solar y planos.</p>
 </div>
 <div class="reveal card" style="background: #141517; border: 1px solid #232428; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 12px;">
 <div aria-hidden="true" style="width: 60px; height: 60px; border-radius: 999px; background: radial-gradient(circle at 30% 30%, #FFD58A, #E3A23F 55%, #8A5F14); color: #0A0A0B; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: 24px;">A</div>
 <h3 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 22px;">Alejandra</h3>
-<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #E3A23F;">Documentación y presupuesto</p>
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #FFFFFF; text-shadow: var(--neon);">Documentación y presupuesto</p>
 <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #B9B6AE;">Pliego, mediciones y un presupuesto sin sorpresas.</p>
 </div>
 </div>
@@ -303,8 +305,8 @@ input,textarea,button{font-family:inherit}
 <div class="drift" aria-hidden="true" style="position: absolute; left: -200px; bottom: -260px; width: 680px; height: 680px; border-radius: 999px; background: radial-gradient(circle, rgba(227,162,63,0.2) 0%, rgba(10,10,11,0) 65%); pointer-events: none;"></div>
 <div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 104px 24px; display: flex; flex-wrap: wrap; gap: 48px;">
 <div class="reveal" style="flex: 1 1 400px; min-width: 0; display: flex; flex-direction: column; gap: 18px;">
-<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #E3A23F;">Contacto</p>
-<h2 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: clamp(36px, 5vw, 60px); line-height: 1.02; letter-spacing: -2px;">Cuéntanos cómo es <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #E3A23F;">tu terraza.</span></h2>
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #FFFFFF; text-shadow: var(--neon);">Contacto</p>
+<h2 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: clamp(36px, 5vw, 60px); line-height: 1.02; letter-spacing: -2px;">Cuéntanos cómo es <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #FFFFFF; text-shadow: var(--neon);">tu terraza.</span></h2>
 <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #B9B6AE;">Con la superficie, la orientación y el municipio preparamos un primer estudio de viabilidad.</p>
 <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #8C8A85;">[correo de contacto] · [teléfono]</p>
 </div>
@@ -319,7 +321,7 @@ input,textarea,button{font-family:inherit}
 </div>
 <div style="display: flex; flex-direction: column; gap: 8px;"><label for="mensaje" style="font-size: 14px; font-weight: 500; color: #B9B6AE;">Qué te gustaría conseguir</label><textarea class="field" id="mensaje" rows="4" style="font-size: 16px; padding: 14px; border-radius: 12px; border: 1px solid #2E3034; background: #0A0A0B; color: #F2EFE8; resize: vertical;"></textarea></div>
 <button class="btn" type="button" onClick="{{send}}" style="align-self: flex-start; background: #E3A23F; color: #0A0A0B; border: none; font-size: 17px; font-weight: 600; padding: 16px 28px; border-radius: 999px; cursor: pointer;">Enviar solicitud</button>
-<sc-if value="{{sent}}" hint-placeholder-val="{{ false }}"><p role="status" style="margin: 0; font-size: 16px; color: #E3A23F;">Gracias: te escribiremos para concertar la visita.</p></sc-if>
+<sc-if value="{{sent}}" hint-placeholder-val="{{ false }}"><p role="status" style="margin: 0; font-size: 16px; color: #FFFFFF; text-shadow: var(--neon);">Gracias: te escribiremos para concertar la visita.</p></sc-if>
 </form>
 </div>
 </section>
