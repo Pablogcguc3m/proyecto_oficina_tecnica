@@ -55,8 +55,8 @@ input,textarea,button{font-family:inherit}
 .field{transition:border-color .3s,box-shadow .3s}
 .field:focus{outline:none;border-color:#E3A23F;box-shadow:0 0 0 4px rgba(227,162,63,.2)}
 .btn{background:#0F0F11;color:#8C8A85;border:1.5px solid #2E2F33;text-shadow:none;box-shadow:inset 0 2px 10px rgba(0,0,0,.7);transition:transform .3s,box-shadow .3s,color .3s,border-color .3s,text-shadow .3s,background .3s}
-.btn:hover,.btn.lit,.btn[aria-pressed="true"]{background:rgba(10,10,11,.55);color:#FFFFFF;border-color:#FFE14D;text-shadow:var(--neon);box-shadow:var(--neon-box)}
-.btn:hover{transform:translateY(-2px)}.btn.lit:hover,.btn[aria-pressed="true"]:hover{box-shadow:var(--neon-box-max)}
+.btn:hover,.btn.lit{background:rgba(10,10,11,.55);color:#FFFFFF;border-color:#FFE14D;text-shadow:var(--neon);box-shadow:var(--neon-box)}
+.btn:hover{transform:translateY(-2px)}.btn.lit:hover{box-shadow:var(--neon-box-max)}
 .navlink{transition:color .3s,text-shadow .3s}.navlink:hover{color:#FFFFFF;text-shadow:var(--neon)}
 .gridbg{background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:64px 64px}
 @keyframes cue{0%{transform:translateY(-6px);opacity:0}35%{opacity:1}100%{transform:translateY(22px);opacity:0}}
@@ -150,11 +150,6 @@ input,textarea,button{font-family:inherit}
 </div>
 <input id="rangoLamas" class="neonrange" type="range" min="0" max="120" step="1" value="{{angle}}" onChange="{{onAngle}}" aria-valuetext="{{angleText}}" style="{{rangeStyle}}">
 <div style="display: flex; justify-content: space-between; font-size: 13px; color: #5A5C60;"><span>0°</span><span>60°</span><span>120°</span></div>
-</div>
-<div style="display: flex; flex-wrap: wrap; gap: 10px;" role="group" aria-label="Ángulo de las lamas">
-<sc-for list="{{modes}}" as="m" hint-placeholder-count="3">
-<button class="btn" type="button" onClick="{{m.pick}}" aria-pressed="{{m.pressed}}" style="{{m.style}}">{{m.label}}</button>
-</sc-for>
 </div>
 <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #B9B6AE;">{{slatText}}</p>
 </div>
@@ -362,7 +357,7 @@ this._fps = 24;
 }
 componentDidMount() {
 var self = this;
-this._onBtnPress = function (e) { var b = e.target.closest && e.target.closest('.btn:not([aria-pressed])'); if (b) b.classList.add('lit'); };
+this._onBtnPress = function (e) { var b = e.target.closest && e.target.closest('.btn'); if (b) b.classList.add('lit'); };
 document.addEventListener('click', this._onBtnPress);
 // Vídeo del giro de las lamas: se busca el fotograma cuyo ángulo coincide con el del deslizador
 var rv = document.getElementById('rangoVideo');
@@ -496,21 +491,13 @@ if (this._seekFrame) { this._seekFrame(k); }
 renderVals() {
 const angle = this.state.angle;
 const defs = [
-{ a: 0, label: 'Cerradas · 0°', text: 'Cerradas: la cubierta es estanca y el agua de lluvia va al canalón.' },
-{ a: 45, label: 'Sombra · 45°', text: 'Entreabiertas: sombra tamizada y ventilación; el aire caliente escapa por arriba.' },
-{ a: 90, label: 'Abiertas · 90°', text: 'Abiertas: entra la luz y, en invierno, el calor del sol.' }
+{ a: 0, text: 'Cerradas: la cubierta es estanca y el agua de lluvia va al canalón.' },
+{ a: 45, text: 'Entreabiertas: sombra tamizada y ventilación; el aire caliente escapa por arriba.' },
+{ a: 90, text: 'Abiertas: entra la luz y, en invierno, el calor del sol.' }
 ];
 const bucket = angle <= 10 ? 0 : (angle < 70 ? 45 : 90);
 const current = defs.find((d) => d.a === bucket);
-const base = 'font-size: 15px; font-weight: 600; padding: 12px 18px; border-radius: 999px; cursor: pointer; ';
-const modes = defs.map((d) => ({
-label: d.label,
-pressed: d.a === bucket ? 'true' : 'false',
-style: base,
-pick: () => this._setAngle(d.a)
-}));
 return {
-modes: modes,
 angle: angle,
 angleLabel: angle + '°',
 angleText: angle + ' grados',
