@@ -33,6 +33,13 @@ input,textarea,button{font-family:inherit}
 @keyframes shimmer{0%{background-position:0% 50%}100%{background-position:200% 50%}}
 :root{--neon:0 0 .04em #FFFFFF,0 0 .12em #FFF6B0,0 0 .3em #FFE14D,0 0 .6em #FFD000,0 0 1.1em rgba(255,200,0,.55);--neon-max:0 0 .04em #FFFFFF,0 0 .15em #FFF6B0,0 0 .38em #FFE14D,0 0 .75em #FFD000,0 0 1.4em rgba(255,200,0,.7);--neon-box:0 0 .3em #FFD000,0 0 1em rgba(255,208,0,.5),inset 0 0 .5em rgba(255,208,0,.4);--neon-box-max:0 0 .45em #FFE14D,0 0 1.6em rgba(255,208,0,.7),inset 0 0 .7em rgba(255,208,0,.55)}
 .neonlogo{overflow:visible;filter:drop-shadow(0 0 1px #FFFFFF) drop-shadow(0 0 3px #FFE14D) drop-shadow(0 0 7px #FFD000) drop-shadow(0 0 14px rgba(255,200,0,.55))}
+.neonrange{-webkit-appearance:none;appearance:none;width:100%;height:28px;margin:0;background:transparent;cursor:pointer}
+.neonrange::-webkit-slider-runnable-track{height:6px;border-radius:999px;background:linear-gradient(90deg,#FFE14D 0,#FFE14D var(--pct),#2E2F33 var(--pct),#2E2F33 100%);box-shadow:0 0 10px rgba(255,208,0,.35)}
+.neonrange::-moz-range-track{height:6px;border-radius:999px;background:#2E2F33}
+.neonrange::-moz-range-progress{height:6px;border-radius:999px;background:#FFE14D;box-shadow:0 0 10px rgba(255,208,0,.6)}
+.neonrange::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;margin-top:-8px;border-radius:50%;background:#FFFFFF;border:2px solid #FFE14D;box-shadow:0 0 6px #FFE14D,0 0 14px #FFD000,0 0 26px rgba(255,200,0,.6)}
+.neonrange::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#FFFFFF;border:2px solid #FFE14D;box-shadow:0 0 6px #FFE14D,0 0 14px #FFD000,0 0 26px rgba(255,200,0,.6)}
+.neonrange:focus{outline:none}.neonrange:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 4px rgba(255,225,77,.35),0 0 14px #FFD000,0 0 30px rgba(255,200,0,.8)}
 .goldtext{color:#FFFFFF;text-shadow:var(--neon);animation:neonhum 4s ease-in-out infinite}
 @keyframes neonhum{0%,100%{text-shadow:var(--neon)}50%{text-shadow:var(--neon-max)}}
 @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
@@ -51,7 +58,6 @@ input,textarea,button{font-family:inherit}
 .btn:hover,.btn.lit,.btn[aria-pressed="true"]{background:rgba(10,10,11,.55);color:#FFFFFF;border-color:#FFE14D;text-shadow:var(--neon);box-shadow:var(--neon-box)}
 .btn:hover{transform:translateY(-2px)}.btn.lit:hover,.btn[aria-pressed="true"]:hover{box-shadow:var(--neon-box-max)}
 .navlink{transition:color .3s,text-shadow .3s}.navlink:hover{color:#FFFFFF;text-shadow:var(--neon)}
-.slat-demo{transform-box:fill-box;transform-origin:center;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
 .gridbg{background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:64px 64px}
 @keyframes cue{0%{transform:translateY(-6px);opacity:0}35%{opacity:1}100%{transform:translateY(22px);opacity:0}}
 .cue-line{animation:cue 1.9s ease-in-out infinite}
@@ -134,15 +140,16 @@ input,textarea,button{font-family:inherit}
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: stretch;">
 <div class="reveal" style="flex: 1 1 520px; min-width: 0; background: #141517; border: 1px solid #232428; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 24px;">
-<div style="background: radial-gradient(circle at 85% 15%, rgba(227,162,63,0.22), rgba(20,21,23,0) 55%), #0F0F11; border-radius: 16px; padding: 20px; display: flex; justify-content: center;">
-<svg width="100%" viewBox="0 0 440 180" role="img" aria-label="{{slatAlt}}" style="max-width: 460px; display: block;">
-<circle cx="392" cy="32" r="18" fill="#E3A23F"></circle>
-<line x1="20" y1="160" x2="420" y2="160" stroke="#2A2C30" stroke-width="2"></line>
-<rect x="20" y="96" width="400" height="6" fill="#3A3E42"></rect>
-<sc-for list="{{slats}}" as="s" hint-placeholder-count="7">
-<rect class="slat-demo" x="{{s.x}}" y="93" width="46" height="12" rx="3" fill="#D8D2C2" style="{{s.style}}"></rect>
-</sc-for>
-</svg>
+<div style="background: #0F0F11; border-radius: 16px; overflow: hidden; aspect-ratio: 16 / 9;">
+<video id="rangoVideo" class="clip" src="./assets/pergola_rango_lamas.mp4" muted playsinline preload="auto" aria-label="{{slatAlt}}"></video>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px;">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px;">
+<label for="rangoLamas" style="font-size: 13px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: #8C8A85;">Giro de las lamas</label>
+<span style="font-family: 'Space Grotesk', Arial, sans-serif; font-size: 34px; font-weight: 700; line-height: 1; color: #FFFFFF; text-shadow: var(--neon);">{{angleLabel}}</span>
+</div>
+<input id="rangoLamas" class="neonrange" type="range" min="0" max="120" step="1" value="{{angle}}" onChange="{{onAngle}}" aria-valuetext="{{angleText}}" style="{{rangeStyle}}">
+<div style="display: flex; justify-content: space-between; font-size: 13px; color: #5A5C60;"><span>0°</span><span>60°</span><span>120°</span></div>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 10px;" role="group" aria-label="Ángulo de las lamas">
 <sc-for list="{{modes}}" as="m" hint-placeholder-count="3">
@@ -348,11 +355,28 @@ class Component extends DCLogic {
 constructor(props) {
 super(props);
 this.state = { angle: 45, sent: false };
+// Ángulo de las lamas (°) en cada fotograma de assets/pergola_rango_lamas.mp4 (24 fps),
+// leído de "angulo_lamas" en Cinemática/pergola_rango_lamas.blend, fotogramas 24–150
+this._rango = [0.0,0.0,0.1,0.2,0.4,0.6,0.8,1.1,1.4,1.8,2.1,2.6,3.1,3.6,4.1,4.7,5.3,6.0,6.7,7.4,8.1,8.9,9.7,10.5,11.4,12.3,13.2,14.2,15.1,16.1,17.2,18.2,19.3,20.4,21.5,22.6,23.8,25.0,26.2,27.4,28.6,29.9,31.1,32.4,33.7,35.0,36.3,37.6,39.0,40.3,41.7,43.1,44.5,45.8,47.2,48.6,50.0,51.5,52.9,54.3,55.7,57.1,58.6,60.0,61.4,62.9,64.3,65.7,67.1,68.5,70.0,71.4,72.8,74.2,75.5,76.9,78.3,79.7,81.0,82.4,83.7,85.0,86.3,87.6,88.9,90.2,91.4,92.6,93.8,95.0,96.2,97.4,98.5,99.6,100.7,101.8,102.8,103.9,104.9,105.8,106.8,107.7,108.6,109.5,110.3,111.1,111.9,112.6,113.3,114.0,114.7,115.3,115.9,116.4,116.9,117.4,117.8,118.2,118.6,118.9,119.2,119.5,119.6,119.8,119.9,120.0,120.0];
+this._fps = 24;
 }
 componentDidMount() {
 var self = this;
 this._onBtnPress = function (e) { var b = e.target.closest && e.target.closest('.btn:not([aria-pressed])'); if (b) b.classList.add('lit'); };
 document.addEventListener('click', this._onBtnPress);
+// Vídeo del giro de las lamas: se busca el fotograma cuyo ángulo coincide con el del deslizador
+var rv = document.getElementById('rangoVideo');
+this._seekFrame = function (k) {
+if (!rv) { return; }
+self._want = (k + 0.5) / self._fps;
+if (!rv.seeking && rv.readyState >= 1) { rv.currentTime = self._want; }
+};
+if (rv) {
+rv.muted = true; rv.playsInline = true; rv.setAttribute('playsinline', '');
+rv.addEventListener('seeked', function () { if (Math.abs(rv.currentTime - self._want) > 0.01) { rv.currentTime = self._want; } });
+rv.addEventListener('loadedmetadata', function () { self._seekFrame(self._frameFor(self.state.angle)); });
+if (rv.readyState >= 1) { this._seekFrame(this._frameFor(this.state.angle)); }
+}
 var loops = document.querySelectorAll('video[data-loop]');
 for (var i = 0; i < loops.length; i++) {
 var el = loops[i];
@@ -459,6 +483,16 @@ var t = p * (v.duration - 0.05);
 if (!v.seeking && Math.abs(v.currentTime - t) > 0.03) { v.currentTime = t; }
 }
 }
+_frameFor(a) {
+var r = this._rango, best = 0;
+for (var k = 1; k < r.length; k++) { if (Math.abs(r[k] - a) < Math.abs(r[best] - a)) { best = k; } }
+return best;
+}
+_setAngle(a) {
+var k = this._frameFor(a);
+this.setState({ angle: Math.round(this._rango[k]) });
+if (this._seekFrame) { this._seekFrame(k); }
+}
 renderVals() {
 const angle = this.state.angle;
 const defs = [
@@ -466,23 +500,24 @@ const defs = [
 { a: 45, label: 'Sombra · 45°', text: 'Entreabiertas: sombra tamizada y ventilación; el aire caliente escapa por arriba.' },
 { a: 90, label: 'Abiertas · 90°', text: 'Abiertas: entra la luz y, en invierno, el calor del sol.' }
 ];
-const current = defs.find((d) => d.a === angle) || defs[1];
+const bucket = angle <= 10 ? 0 : (angle < 70 ? 45 : 90);
+const current = defs.find((d) => d.a === bucket);
 const base = 'font-size: 15px; font-weight: 600; padding: 12px 18px; border-radius: 999px; cursor: pointer; ';
 const modes = defs.map((d) => ({
 label: d.label,
-pressed: d.a === angle ? 'true' : 'false',
+pressed: d.a === bucket ? 'true' : 'false',
 style: base,
-pick: () => this.setState({ angle: d.a })
+pick: () => this._setAngle(d.a)
 }));
-const slats = [];
-for (let i = 0; i < 7; i++) {
-slats.push({ x: 34 + i * 56, style: 'transform: rotate(' + (-angle) + 'deg);' });
-}
 return {
 modes: modes,
-slats: slats,
+angle: angle,
+angleLabel: angle + '°',
+angleText: angle + ' grados',
+rangeStyle: '--pct: ' + (angle / 120 * 100).toFixed(2) + '%;',
+onAngle: (e) => this._setAngle(Number(e.target.value)),
 slatText: current.text,
-slatAlt: 'Esquema de siete lamas giradas ' + angle + ' grados sobre su eje',
+slatAlt: 'Render de la pérgola con las lamas giradas ' + angle + ' grados',
 sent: this.state.sent,
 send: () => this.setState({ sent: true })
 };
