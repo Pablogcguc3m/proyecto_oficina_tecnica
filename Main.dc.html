@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Heliotec Ingeniería · Domina el sol</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=Instrument+Serif:ital@1&amp;display=swap">
+<style>
+body{margin:0;background:#0A0A0B}
+a{color:#E3A23F}a:hover{color:#F2EFE8}
+input,textarea,button{font-family:inherit}
+@keyframes swing{0%{transform:rotate(0deg)}100%{transform:rotate(-72deg)}}
+.swing{transform-box:fill-box;transform-origin:center;animation:swing 5s cubic-bezier(.65,0,.35,1) infinite alternate}
+@keyframes rayPulse{0%{opacity:.04}100%{opacity:.85}}
+.ray{animation:rayPulse 5s cubic-bezier(.65,0,.35,1) infinite alternate}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.15);opacity:1}}
+.pulse{transform-box:fill-box;transform-origin:center;animation:pulse 6s ease-in-out infinite}
+@keyframes drift{0%{transform:translate(0,0)}100%{transform:translate(-60px,40px)}}
+.drift{animation:drift 14s ease-in-out infinite alternate}
+@keyframes kb{0%{transform:scale(1.02) translate(0,0)}100%{transform:scale(1.16) translate(-2.5%,-2%)}}
+.kb{animation:kb 16s ease-in-out infinite alternate;will-change:transform}
+@keyframes sheen{0%{transform:translateX(-150%) skewX(-18deg)}55%,100%{transform:translateX(320%) skewX(-18deg)}}
+.sheen{position:relative;overflow:hidden}
+.sheen::after{content:"";position:absolute;top:0;bottom:0;left:0;width:35%;background:linear-gradient(90deg,transparent,rgba(255,226,170,.13),transparent);animation:sheen 7s ease-in-out infinite;pointer-events:none}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee{display:flex;width:max-content;animation:marquee 38s linear infinite}
+@keyframes shimmer{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+.goldtext{background:linear-gradient(90deg,#E3A23F,#FFD58A,#E3A23F,#B97A22,#E3A23F);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 6s linear infinite}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+.rise{animation:rise 1s cubic-bezier(.2,.8,.2,1) both}
+@keyframes reveal{from{opacity:0;transform:translateY(56px) scale(.98)}to{opacity:1;transform:none}}
+@supports (animation-timeline: view()){.reveal{animation:reveal linear both;animation-timeline:view();animation-range:entry 0% cover 26%}}
+.card{transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s,border-color .5s}
+.card:hover{transform:translateY(-8px);border-color:#E3A23F;box-shadow:0 30px 70px -24px rgba(227,162,63,.38)}
+.zoom{transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.card:hover .zoom{transform:scale(1.07)}
+@keyframes flow{from{background-position:0% 0}to{background-position:200% 0}}
+.flowline{background:linear-gradient(90deg,#2A2C30,#E3A23F,#2A2C30,#2A2C30);background-size:200% 100%;animation:flow 3.5s linear infinite}
+.field{transition:border-color .3s,box-shadow .3s}
+.field:focus{outline:none;border-color:#E3A23F;box-shadow:0 0 0 4px rgba(227,162,63,.2)}
+.btn{transition:transform .3s,box-shadow .3s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px -10px rgba(227,162,63,.65)}
+.navlink{transition:color .3s}.navlink:hover{color:#E3A23F}
+.slat-demo{transform-box:fill-box;transform-origin:center;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.gridbg{background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:64px 64px}
+@keyframes cue{0%{transform:translateY(-6px);opacity:0}35%{opacity:1}100%{transform:translateY(22px);opacity:0}}
+.cue-line{animation:cue 1.9s ease-in-out infinite}
+.clip{width:100%;height:100%;object-fit:cover;display:block}
+@media (prefers-reduced-motion: reduce){*,*::after{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+<div style="background: #0A0A0B; color: #F2EFE8; font-family: 'IBM Plex Sans', Arial, sans-serif; overflow: hidden;">
+
+<header style="position: sticky; top: 0; z-index: 20; background: rgba(10,10,11,0.72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid #1E1F22;">
+<nav aria-label="Principal" style="max-width: 1240px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;">
+<a href="#inicio" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+<svg width="36" height="36" viewBox="0 0 120 120" aria-hidden="true">
+<defs><mask id="lamasNav"><rect width="120" height="120" fill="#FFFFFF"></rect><g transform="rotate(-24 60 60)" fill="#000000"><rect x="-30" y="56" width="180" height="7"></rect><rect x="-30" y="72" width="180" height="7"></rect><rect x="-30" y="88" width="180" height="7"></rect></g></mask></defs>
+<circle cx="60" cy="60" r="50" fill="#E3A23F" mask="url(#lamasNav)"></circle>
+</svg>
+<span style="font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: -0.5px; color: #F2EFE8;">Heliotec</span>
+</a>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 26px;">
+<a class="navlink" href="#funciona" style="color: #B9B6AE; text-decoration: none; font-size: 15px; padding: 12px 0;">Cómo funciona</a>
+<a class="navlink" href="#soluciones" style="color: #B9B6AE; text-decoration: none; font-size: 15px; padding: 12px 0;">Soluciones</a>
+<a class="navlink" href="#proceso" style="color: #B9B6AE; text-decoration: none; font-size: 15px; padding: 12px 0;">Proceso</a>
+<a class="navlink" href="#equipo" style="color: #B9B6AE; text-decoration: none; font-size: 15px; padding: 12px 0;">Equipo</a>
+<a class="btn" href="#contacto" style="background: #E3A23F; color: #0A0A0B; text-decoration: none; font-size: 15px; font-weight: 600; padding: 12px 20px; border-radius: 999px;">Pide tu estudio</a>
+</div>
+</nav>
+</header>
+
+<section id="inicio" style="position: relative; height: max(560px, min(calc(100vh - 70px), 900px)); background: #000000;">
+<div id="heroStage" style="position: relative; height: 100%; overflow: hidden; background: #000000;">
+<div aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: rgba(255,255,255,0.08); z-index: 3;"><div id="heroBar" style="height: 100%; background: #E3A23F; transform-origin: left center; transform: scaleX(0);"></div></div>
+<video id="heroVideo" src="./assets/9ebc0f74cb24d52e1ec6601e61c92924.mp4" preload="auto" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;"></video>
+<div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(10,10,11,0.92) 0%, rgba(10,10,11,0.55) 30%, rgba(10,10,11,0) 60%);"></div>
+<div id="heroShade" aria-hidden="true" style="position: absolute; inset: 0; background: #000000; opacity: 1;"></div>
+<div id="heroCue" style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; pointer-events: none;">
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 6px; text-transform: uppercase; color: #B9B6AE;">Desliza para encender la luz</p>
+<div aria-hidden="true" style="width: 1px; height: 56px; overflow: hidden;"><div class="cue-line" style="width: 1px; height: 28px; background: #E3A23F;"></div></div>
+</div>
+<div id="heroCopy" style="position: relative; height: 100%; max-width: 1240px; margin: 0 auto; padding: 0 24px 11vh; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-end; gap: 24px; opacity: 0; transform: translateY(40px); pointer-events: none; transition: opacity 1s ease, transform 1s cubic-bezier(.2,.8,.2,1);">
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #E3A23F;">Pérgolas bioclimáticas · Oficina técnica</p>
+<h1 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: clamp(56px, 8vw, 112px); line-height: 0.95; letter-spacing: -3px;">Domina el <span class="goldtext" style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -1px;">sol.</span></h1>
+<p style="margin: 0; font-size: 20px; line-height: 1.6; color: #D6D2C9; max-width: 560px;">Lamas orientables que se abren, se cierran y se ajustan a la hora del día. Calculadas para tu orientación, tu clima y tu terraza.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px;">
+<a class="btn" href="#contacto" style="background: #E3A23F; color: #0A0A0B; text-decoration: none; font-weight: 600; font-size: 17px; padding: 16px 28px; border-radius: 999px;">Pide un estudio de tu terraza</a>
+<a href="#soluciones" style="color: #F2EFE8; text-decoration: none; font-weight: 500; font-size: 17px; padding: 15px 26px; border-radius: 999px; border: 1px solid #5A5C60; background: rgba(10,10,11,0.4);">Ver soluciones</a>
+</div>
+</div>
+</div>
+</section>
+
+<div aria-hidden="true" style="border-top: 1px solid #1E1F22; border-bottom: 1px solid #1E1F22; background: #0F0F11; padding: 22px 0; overflow: hidden;">
+<div class="marquee" style="gap: 48px; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 28px; font-weight: 500; color: #3E4044; white-space: nowrap;">
+<span>Sombra</span><span style="color: #E3A23F;">✦</span><span>Ventilación</span><span style="color: #E3A23F;">✦</span><span>Lluvia</span><span style="color: #E3A23F;">✦</span><span>CTE DB-SE-AE</span><span style="color: #E3A23F;">✦</span><span>UNE 157001</span><span style="color: #E3A23F;">✦</span><span>Lamas de 0° a 120°</span><span style="color: #E3A23F;">✦</span><span>Todo el año</span><span style="color: #E3A23F;">✦</span>
+<span>Sombra</span><span style="color: #E3A23F;">✦</span><span>Ventilación</span><span style="color: #E3A23F;">✦</span><span>Lluvia</span><span style="color: #E3A23F;">✦</span><span>CTE DB-SE-AE</span><span style="color: #E3A23F;">✦</span><span>UNE 157001</span><span style="color: #E3A23F;">✦</span><span>Lamas de 0° a 120°</span><span style="color: #E3A23F;">✦</span><span>Todo el año</span><span style="color: #E3A23F;">✦</span>
+</div>
+</div>
+
+<section style="max-width: 1240px; margin: 0 auto; padding: 104px 24px 40px;">
+<div class="reveal card sheen" style="background: #141517; border: 1px solid #232428; border-radius: 28px; display: flex; flex-wrap: wrap; align-items: stretch;">
+<div style="flex: 3 1 520px; min-width: 0; overflow: hidden; border-radius: 28px; display: flex; align-items: center; justify-content: center; padding: 24px;">
+<video data-loop="1" class="clip" src="./assets/5292610dbbc5ddd7dfb4b9c8eb343903.mp4" poster="./assets/4d5f582b61e90376c3b09d54d6434c08.jpg" preload="metadata" aria-label="Render: la cámara entra en la pérgola acristalada mientras las lamas se abren" style="width: 100%; max-width: 760px; height: auto; aspect-ratio: 16 / 9; border-radius: 18px;"></video>
+</div>
+<div style="flex: 2 1 320px; min-width: 0; padding: 48px 40px; display: flex; flex-direction: column; justify-content: center; gap: 28px; border-left: 1px solid #232428;">
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #E3A23F;">Proyecto de referencia</p>
+<h2 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 38px; line-height: 1.1; letter-spacing: -1px;">Una terraza este en Pozuelo de Alarcón</h2>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px;">
+<div><p style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 44px; font-weight: 700; line-height: 1;">18 m²</p><p style="margin: 6px 0 0; font-size: 15px; color: #8C8A85;">6 × 3 m cubiertos</p></div>
+<div><p style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 44px; font-weight: 700; line-height: 1;">32</p><p style="margin: 6px 0 0; font-size: 15px; color: #8C8A85;">lamas motorizadas</p></div>
+<div><p style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 44px; font-weight: 700; line-height: 1;">0–120°</p><p style="margin: 6px 0 0; font-size: 15px; color: #8C8A85;">de giro de las lamas</p></div>
+<div><p style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 44px; font-weight: 700; line-height: 1;">3 lados</p><p style="margin: 6px 0 0; font-size: 15px; color: #8C8A85;">con cortinas de vidrio</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="funciona" style="max-width: 1240px; margin: 0 auto; padding: 96px 24px;">
+<div class="reveal" style="display: flex; flex-direction: column; gap: 14px; max-width: 760px; margin-bottom: 48px;">
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #E3A23F;">Cómo funciona</p>
+<h2 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: clamp(36px, 5vw, 60px); line-height: 1.02; letter-spacing: -2px;">Tres efectos con un <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #E3A23F;">solo gesto.</span></h2>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: stretch;">
+<div class="reveal" style="flex: 1 1 520px; min-width: 0; background: #141517; border: 1px solid #232428; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 24px;">
+<div style="background: radial-gradient(circle at 85% 15%, rgba(227,162,63,0.22), rgba(20,21,23,0) 55%), #0F0F11; border-radius: 16px; padding: 20px; display: flex; justify-content: center;">
+<svg width="100%" viewBox="0 0 440 180" role="img" aria-label="{{slatAlt}}" style="max-width: 460px; display: block;">
+<circle cx="392" cy="32" r="18" fill="#E3A23F"></circle>
+<line x1="20" y1="160" x2="420" y2="160" stroke="#2A2C30" stroke-width="2"></line>
+<rect x="20" y="96" width="400" height="6" fill="#3A3E42"></rect>
+<sc-for list="{{slats}}" as="s" hint-placeholder-count="7">
+<rect class="slat-demo" x="{{s.x}}" y="93" width="46" height="12" rx="3" fill="#D8D2C2" style="{{s.style}}"></rect>
+</sc-for>
+</svg>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px;" role="group" aria-label="Ángulo de las lamas">
+<sc-for list="{{modes}}" as="m" hint-placeholder-count="3">
+<button type="button" onClick="{{m.pick}}" aria-pressed="{{m.pressed}}" style="{{m.style}}">{{m.label}}</button>
+</sc-for>
+</div>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #B9B6AE;">{{slatText}}</p>
+</div>
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+<div class="reveal card" style="background: #141517; border: 1px solid #232428; border-radius: 20px; padding: 28px; display: flex; gap: 20px; align-items: flex-start;">
+<span style="font-family: 'Space Grotesk', Arial, sans-serif; font-size: 15px; font-weight: 700; color: #E3A23F; padding-top: 4px;">01</span>
+<div style="display: flex; flex-direction: column; gap: 6px;"><h3 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 22px;">Sombreamiento</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #B9B6AE;">Las lamas bloquean la radiación directa: menos calor sin renunciar a la luz.</p></div>
+</div>
+<div class="reveal card" style="background: #141517; border: 1px solid #232428; border-radius: 20px; padding: 28px; display: flex; gap: 20px; align-items: flex-start;">
+<span style="font-family: 'Space Grotesk', Arial, sans-serif; font-size: 15px; font-weight: 700; color: #E3A23F; padding-top: 4px;">02</span>
+<div style="display: flex; flex-direction: column; gap: 6px;"><h3 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 22px;">Ventilación natural</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #B9B6AE;">Entreabiertas, dejan escapar el aire caliente por arriba: efecto chimenea.</p></div>
+</div>
+<div class="reveal card" style="background: #141517; border: 1px solid #232428; border-radius: 20px; padding: 28px; display: flex; gap: 20px; align-items: flex-start;">
+<span style="font-family: 'Space Grotesk', Arial, sans-serif; font-size: 15px; font-weight: 700; color: #E3A23F; padding-top: 4px;">03</span>
+<div style="display: flex; flex-direction: column; gap: 6px;"><h3 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 22px;">Protección frente a la lluvia</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #B9B6AE;">Cerradas, forman una cubierta estanca que lleva el agua al canalón.</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="cinematica" style="max-width: 1240px; margin: 0 auto; padding: 104px 24px;">
+<div class="reveal" style="display: flex; flex-direction: column; gap: 14px; max-width: 820px; margin-bottom: 48px;">
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #E3A23F;">Render del proyecto</p>
+<h2 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: clamp(36px, 5vw, 60px); line-height: 1.02; letter-spacing: -2px;">Míralo antes de <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #E3A23F;">construirlo.</span></h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #8C8A85;">Fragmentos de la animación 3D del proyecto de referencia, al caer la tarde y con la iluminación LED de la pérgola encendida.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px;">
+<figure class="reveal card" style="margin: 0; background: #141517; border: 1px solid #232428; border-radius: 24px; padding: 14px; display: flex; flex-direction: column; gap: 14px;">
+<div style="border-radius: 14px; overflow: hidden; aspect-ratio: 16 / 9; background: #0F0F11;"><video data-loop="1" class="clip zoom" src="./assets/93480c77ddeb10bb220740a5a32db541.mp4" poster="./assets/3fd8505606611bfde1bbbaf8225e76d5.jpg" preload="metadata" aria-label="Render: recorrido lateral junto a la fachada de hormigón hasta descubrir la pérgola"></video></div>
+<figcaption style="padding: 0 10px 8px; display: flex; flex-direction: column; gap: 4px;"><strong style="font-family: 'Space Grotesk', Arial, sans-serif; font-size: 20px;">Recorrido junto a la fachada</strong><span style="font-size: 15px; line-height: 1.5; color: #B9B6AE;">La pérgola se integra en la casa como una estancia más.</span></figcaption>
+</figure>
+<figure class="reveal card" style="margin: 0; background: #141517; border: 1px solid #232428; border-radius: 24px; padding: 14px; display: flex; flex-direction: column; gap: 14px;">
+<div style="border-radius: 14px; overflow: hidden; aspect-ratio: 16 / 9; background: #0F0F11;"><video data-loop="1" class="clip zoom" src="./assets/a3a3a7c57216602c8f49420e21d60638.mp4" poster="./assets/d2f1de58990971974113089de5cb0706.jpg" preload="metadata" aria-label="Render: vista desde el sofá de la pérgola hacia el jardín y la piscina"></video></div>
+<figcaption style="padding: 0 10px 8px; display: flex; flex-direction: column; gap: 4px;"><strong style="font-family: 'Space Grotesk', Arial, sans-serif; font-size: 20px;">Desde dentro, mirando al jardín</strong><span style="font-size: 15px; line-height: 1.5; color: #B9B6AE;">Las cortinas de vidrio cierran sin perfiles verticales: el jardín sigue a la vista.</span></figcaption>
+</figure>
+</div>
+</section>
+
+<section id="ingenieria" style="background: #0F0F11; border-top: 1px solid #1E1F22; border-bottom: 1px solid #1E1F22;">
+<div style="max-width: 1240px; margin: 0 auto; padding: 104px 24px; display: flex; flex-direction: column; gap: 48px;">
+<div class="reveal" style="display: flex; flex-direction: column; gap: 14px; max-width: 820px;">
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #E3A23F;">Ingeniería, no catálogo</p>
+<h2 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: clamp(36px, 5vw, 60px); line-height: 1.02; letter-spacing: -2px;">Cada pérgola sale de un <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #E3A23F;">cálculo.</span></h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
+<div class="reveal card" style="background: #141517; border: 1px solid #232428; border-radius: 20px; padding: 30px; display: flex; flex-direction: column; gap: 12px;">
+<p style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 44px; font-weight: 700; line-height: 1; color: #2E3034;">01</p>
+<h3 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 21px;">Las cargas de tu municipio</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #B9B6AE;">Nieve y viento según el CTE DB-SE-AE; la estructura se comprueba en estado límite último.</p>
+</div>
+<div class="reveal card" style="background: #141517; border: 1px solid #232428; border-radius: 20px; padding: 30px; display: flex; flex-direction: column; gap: 12px;">
+<p style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 44px; font-weight: 700; line-height: 1; color: #2E3034;">02</p>
+<h3 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 21px;">Estudio solar de tu orientación</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #B9B6AE;">Calculamos, hora a hora, cuánto pueden abrirse las lamas sin dejar pasar el sol directo.</p>
+</div>
+<div class="reveal card" style="background: #141517; border: 1px solid #232428; border-radius: 20px; padding: 30px; display: flex; flex-direction: column; gap: 12px;">
+<p style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 44px; font-weight: 700; line-height: 1; color: #2E3034;">03</p>
+<h3 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 21px;">Control automático</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #B9B6AE;">Sensores de lluvia y viento que cierran solos, y ajuste del ángulo según la posición del sol.</p>
+</div>
+<div class="reveal card" style="background: #141517; border: 1px solid #232428; border-radius: 20px; padding: 30px; display: flex; flex-direction: column; gap: 12px;">
+<p style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 44px; font-weight: 700; line-height: 1; color: #2E3034;">04</p>
+<h3 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 21px;">Proyecto documentado</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #B9B6AE;">Memoria, planos, pliego de condiciones y presupuesto según la UNE 157001.</p>
+</div>
+</div>
+<div class="reveal" style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 32px; padding-top: 16px;">
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: #8C8A85;">Regla de giro de las lamas</p>
+<p class="goldtext" style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: clamp(30px, 4.4vw, 56px); font-weight: 700; letter-spacing: -1px;">w·|sin(β − φ)| ≥ p·sin β</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.5; color: #8C8A85;">Verificada por trazado de rayos: error máximo de 0,14°.</p>
+</div>
+</div>
+</section>
+
+<section id="soluciones" style="max-width: 1240px; margin: 0 auto; padding: 104px 24px;">
+<div class="reveal" style="display: flex; flex-direction: column; gap: 14px; max-width: 820px; margin-bottom: 48px;">
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #E3A23F;">Soluciones</p>
+<h2 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: clamp(36px, 5vw, 60px); line-height: 1.02; letter-spacing: -2px;">Tres formas de cubrir <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #E3A23F;">una terraza.</span></h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #8C8A85;">Precios orientativos del proyecto de referencia: 6 × 3 m, orientación este, IVA incluido.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 20px;">
+<article class="reveal card" style="background: linear-gradient(180deg, #1C1A16 0%, #141517 60%); border: 1px solid #5A4520; border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 14px;">
+<div class="sheen" style="background: #0F0F11; border-radius: 16px; overflow: hidden;"><img class="zoom" src="./assets/bde967d3d04833cba675ae21f6db63eb.jpg" alt="Render: pérgola adosada con lamas orientables y cortinas de vidrio en los tres lados abiertos" style="width: 100%; height: 240px; object-fit: cover; display: block;"></div>
+<p style="margin: 6px 0 0; font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #E3A23F;">Todo el año · recomendada</p>
+<h3 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 28px; letter-spacing: -0.5px;">Adosada acristalada</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #B9B6AE;">Lamas motorizadas y cortinas de vidrio plegables en los lados abiertos: abrigo frente al viento y la lluvia lateral.</p>
+<p style="margin: auto 0 0; padding-top: 12px; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 34px; font-weight: 700;">18.442 €</p>
+</article>
+<article class="reveal card" style="background: #141517; border: 1px solid #232428; border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 14px;">
+<div class="sheen" style="background: #0F0F11; border-radius: 16px; overflow: hidden;"><img class="zoom" src="./assets/010437032fcc5d1113ce89344de98294.jpg" alt="Render: pérgola de aluminio adosada a la fachada, con lamas orientables y sin cerramiento" style="width: 100%; height: 240px; object-fit: cover; display: block;"></div>
+<p style="margin: 6px 0 0; font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #8C8A85;">La más equilibrada</p>
+<h3 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 28px; letter-spacing: -0.5px;">Adosada de aluminio</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #B9B6AE;">Tres pilares y un perfil anclado a la fachada; motor con sensores de lluvia y viento.</p>
+<p style="margin: auto 0 0; padding-top: 12px; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 34px; font-weight: 700;">9.281 €</p>
+</article>
+<article class="reveal card" style="background: #141517; border: 1px solid #232428; border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 14px;">
+<div class="sheen" style="background: #0F0F11; border-radius: 16px; overflow: hidden;"><img class="zoom" src="./assets/138ab3d1e1fd50d9358908dc0d3def53.jpg" alt="Render: pérgola autoportante con pilares también junto a la fachada y lamas orientables" style="width: 100%; height: 240px; object-fit: cover; display: block;"></div>
+<p style="margin: 6px 0 0; font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #8C8A85;">La más económica</p>
+<h3 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 28px; letter-spacing: -0.5px;">Acero manual</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #B9B6AE;">Estructura autoportante de acero y lamas giradas con manivela, sin electrónica.</p>
+<p style="margin: auto 0 0; padding-top: 12px; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 34px; font-weight: 700;">8.273 €</p>
+</article>
+</div>
+</section>
+
+<section id="proceso" style="background: #0F0F11; border-top: 1px solid #1E1F22; border-bottom: 1px solid #1E1F22;">
+<div style="max-width: 1240px; margin: 0 auto; padding: 104px 24px; display: flex; flex-direction: column; gap: 40px;">
+<div class="reveal" style="display: flex; flex-direction: column; gap: 14px; max-width: 820px;">
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #E3A23F;">Proceso</p>
+<h2 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: clamp(36px, 5vw, 60px); line-height: 1.02; letter-spacing: -2px;">De la primera visita <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #E3A23F;">al montaje.</span></h2>
+</div>
+<div class="flowline" aria-hidden="true" style="height: 2px; border-radius: 2px;"></div>
+<ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+<li class="reveal card" style="background: #141517; border: 1px solid #232428; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 10px;"><span class="goldtext" style="font-family: 'Space Grotesk', Arial, sans-serif; font-size: 40px; font-weight: 700; line-height: 1;">1</span><strong style="font-family: 'Space Grotesk', Arial, sans-serif; font-size: 20px;">Estudio</strong><span style="font-size: 15px; line-height: 1.6; color: #B9B6AE;">Medimos, vemos la orientación y anotamos qué necesitas.</span></li>
+<li class="reveal card" style="background: #141517; border: 1px solid #232428; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 10px;"><span class="goldtext" style="font-family: 'Space Grotesk', Arial, sans-serif; font-size: 40px; font-weight: 700; line-height: 1;">2</span><strong style="font-family: 'Space Grotesk', Arial, sans-serif; font-size: 20px;">Anteproyecto</strong><span style="font-size: 15px; line-height: 1.6; color: #B9B6AE;">Varias alternativas, cada una con planos y precio.</span></li>
+<li class="reveal card" style="background: #141517; border: 1px solid #232428; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 10px;"><span class="goldtext" style="font-family: 'Space Grotesk', Arial, sans-serif; font-size: 40px; font-weight: 700; line-height: 1;">3</span><strong style="font-family: 'Space Grotesk', Arial, sans-serif; font-size: 20px;">Elección</strong><span style="font-size: 15px; line-height: 1.6; color: #B9B6AE;">Las comparamos contigo con criterios claros.</span></li>
+<li class="reveal card" style="background: #141517; border: 1px solid #232428; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 10px;"><span class="goldtext" style="font-family: 'Space Grotesk', Arial, sans-serif; font-size: 40px; font-weight: 700; line-height: 1;">4</span><strong style="font-family: 'Space Grotesk', Arial, sans-serif; font-size: 20px;">Proyecto</strong><span style="font-size: 15px; line-height: 1.6; color: #B9B6AE;">Cálculo, planos de detalle, pliego y presupuesto cerrado.</span></li>
+<li class="reveal card" style="background: #141517; border: 1px solid #232428; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 10px;"><span class="goldtext" style="font-family: 'Space Grotesk', Arial, sans-serif; font-size: 40px; font-weight: 700; line-height: 1;">5</span><strong style="font-family: 'Space Grotesk', Arial, sans-serif; font-size: 20px;">Montaje</strong><span style="font-size: 15px; line-height: 1.6; color: #B9B6AE;">Instalación y pruebas de estanqueidad y funcionamiento.</span></li>
+</ol>
+</div>
+</section>
+
+<section id="equipo" style="max-width: 1240px; margin: 0 auto; padding: 104px 24px;">
+<div class="reveal" style="display: flex; flex-direction: column; gap: 14px; max-width: 820px; margin-bottom: 48px;">
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #E3A23F;">Equipo</p>
+<h2 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: clamp(36px, 5vw, 60px); line-height: 1.02; letter-spacing: -2px;">Cuatro ingenieros, <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #E3A23F;">un responsable por parte.</span></h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
+<div class="reveal card" style="background: #141517; border: 1px solid #232428; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 12px;">
+<div aria-hidden="true" style="width: 60px; height: 60px; border-radius: 999px; background: radial-gradient(circle at 30% 30%, #FFD58A, #E3A23F 55%, #8A5F14); color: #0A0A0B; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: 24px;">P</div>
+<h3 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 22px;">Pablo</h3>
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #E3A23F;">Dirección de proyecto</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #B9B6AE;">Coordina el equipo y vela por que todos los documentos digan lo mismo.</p>
+</div>
+<div class="reveal card" style="background: #141517; border: 1px solid #232428; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 12px;">
+<div aria-hidden="true" style="width: 60px; height: 60px; border-radius: 999px; background: radial-gradient(circle at 30% 30%, #FFD58A, #E3A23F 55%, #8A5F14); color: #0A0A0B; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: 24px;">D</div>
+<h3 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 22px;">Daniel</h3>
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #E3A23F;">Comercial y mercado</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #B9B6AE;">Tu interlocutor: recoge lo que necesitas y lo compara con el mercado.</p>
+</div>
+<div class="reveal card" style="background: #141517; border: 1px solid #232428; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 12px;">
+<div aria-hidden="true" style="width: 60px; height: 60px; border-radius: 999px; background: radial-gradient(circle at 30% 30%, #FFD58A, #E3A23F 55%, #8A5F14); color: #0A0A0B; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: 24px;">S</div>
+<h3 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 22px;">Santiago</h3>
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #E3A23F;">Diseño y cálculo</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #B9B6AE;">Convierte tus requisitos en estructura, estudio solar y planos.</p>
+</div>
+<div class="reveal card" style="background: #141517; border: 1px solid #232428; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 12px;">
+<div aria-hidden="true" style="width: 60px; height: 60px; border-radius: 999px; background: radial-gradient(circle at 30% 30%, #FFD58A, #E3A23F 55%, #8A5F14); color: #0A0A0B; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: 24px;">A</div>
+<h3 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 22px;">Alejandra</h3>
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #E3A23F;">Documentación y presupuesto</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #B9B6AE;">Pliego, mediciones y un presupuesto sin sorpresas.</p>
+</div>
+</div>
+</section>
+
+<section id="contacto" style="position: relative; border-top: 1px solid #1E1F22;">
+<div class="drift" aria-hidden="true" style="position: absolute; left: -200px; bottom: -260px; width: 680px; height: 680px; border-radius: 999px; background: radial-gradient(circle, rgba(227,162,63,0.2) 0%, rgba(10,10,11,0) 65%); pointer-events: none;"></div>
+<div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 104px 24px; display: flex; flex-wrap: wrap; gap: 48px;">
+<div class="reveal" style="flex: 1 1 400px; min-width: 0; display: flex; flex-direction: column; gap: 18px;">
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #E3A23F;">Contacto</p>
+<h2 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: clamp(36px, 5vw, 60px); line-height: 1.02; letter-spacing: -2px;">Cuéntanos cómo es <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #E3A23F;">tu terraza.</span></h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #B9B6AE;">Con la superficie, la orientación y el municipio preparamos un primer estudio de viabilidad.</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #8C8A85;">[correo de contacto] · [teléfono]</p>
+</div>
+<form class="reveal" style="flex: 1 1 480px; min-width: 0; background: rgba(20,21,23,0.85); border: 1px solid #232428; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 18px; backdrop-filter: blur(8px);">
+<div style="display: flex; flex-wrap: wrap; gap: 18px;">
+<div style="flex: 1 1 200px; display: flex; flex-direction: column; gap: 8px;"><label for="nombre" style="font-size: 14px; font-weight: 500; color: #B9B6AE;">Nombre</label><input class="field" id="nombre" type="text" autocomplete="name" style="font-size: 16px; padding: 14px; border-radius: 12px; border: 1px solid #2E3034; background: #0A0A0B; color: #F2EFE8;"></div>
+<div style="flex: 1 1 200px; display: flex; flex-direction: column; gap: 8px;"><label for="correo" style="font-size: 14px; font-weight: 500; color: #B9B6AE;">Correo electrónico</label><input class="field" id="correo" type="email" autocomplete="email" style="font-size: 16px; padding: 14px; border-radius: 12px; border: 1px solid #2E3034; background: #0A0A0B; color: #F2EFE8;"></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 18px;">
+<div style="flex: 1 1 200px; display: flex; flex-direction: column; gap: 8px;"><label for="municipio" style="font-size: 14px; font-weight: 500; color: #B9B6AE;">Municipio</label><input class="field" id="municipio" type="text" style="font-size: 16px; padding: 14px; border-radius: 12px; border: 1px solid #2E3034; background: #0A0A0B; color: #F2EFE8;"></div>
+<div style="flex: 1 1 200px; display: flex; flex-direction: column; gap: 8px;"><label for="superficie" style="font-size: 14px; font-weight: 500; color: #B9B6AE;">Superficie aproximada (m²)</label><input class="field" id="superficie" type="number" min="1" style="font-size: 16px; padding: 14px; border-radius: 12px; border: 1px solid #2E3034; background: #0A0A0B; color: #F2EFE8;"></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px;"><label for="mensaje" style="font-size: 14px; font-weight: 500; color: #B9B6AE;">Qué te gustaría conseguir</label><textarea class="field" id="mensaje" rows="4" style="font-size: 16px; padding: 14px; border-radius: 12px; border: 1px solid #2E3034; background: #0A0A0B; color: #F2EFE8; resize: vertical;"></textarea></div>
+<button class="btn" type="button" onClick="{{send}}" style="align-self: flex-start; background: #E3A23F; color: #0A0A0B; border: none; font-size: 17px; font-weight: 600; padding: 16px 28px; border-radius: 999px; cursor: pointer;">Enviar solicitud</button>
+<sc-if value="{{sent}}" hint-placeholder-val="{{ false }}"><p role="status" style="margin: 0; font-size: 16px; color: #E3A23F;">Gracias: te escribiremos para concertar la visita.</p></sc-if>
+</form>
+</div>
+</section>
+
+<footer style="border-top: 1px solid #1E1F22; background: #070708;">
+<div style="max-width: 1240px; margin: 0 auto; padding: 40px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px;">
+<div style="display: flex; align-items: center; gap: 12px;">
+<svg width="30" height="30" viewBox="0 0 120 120" aria-hidden="true">
+<defs><mask id="lamasPie"><rect width="120" height="120" fill="#FFFFFF"></rect><g transform="rotate(-24 60 60)" fill="#000000"><rect x="-30" y="56" width="180" height="7"></rect><rect x="-30" y="72" width="180" height="7"></rect><rect x="-30" y="88" width="180" height="7"></rect></g></mask></defs>
+<circle cx="60" cy="60" r="50" fill="#E3A23F" mask="url(#lamasPie)"></circle>
+</svg>
+<span style="font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: 19px; color: #F2EFE8;">Heliotec Ingeniería</span>
+</div>
+<p style="margin: 0; font-size: 13px; line-height: 1.6; color: #8C8A85; max-width: 640px;">Oficina técnica ficticia del proyecto de la asignatura Oficina Técnica, Grado en Ingeniería Mecánica, UC3M. Precios orientativos de un proyecto de referencia, no una oferta.</p>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":6600}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { angle: 45, sent: false };
+}
+componentDidMount() {
+var self = this;
+var loops = document.querySelectorAll('video[data-loop]');
+for (var i = 0; i < loops.length; i++) {
+var el = loops[i];
+el.muted = true; el.loop = true; el.playsInline = true; el.setAttribute('playsinline', '');
+var pr = el.play(); if (pr && pr.catch) { pr.catch(function () {}); }
+}
+var v = document.getElementById('heroVideo');
+if (v) { v.muted = true; v.playsInline = true; v.setAttribute('playsinline', ''); }
+// La cabecera retiene el scroll: mientras la animación no está completa, la rueda,
+// el gesto táctil o el teclado hacen avanzar la animación en vez de bajar la página.
+// 0–1: cinemática; 1–1,35: aparece el título y la página sigue retenida unos scrolls más
+this._max = 1.35;
+this._p = 0; this._target = 0; this._raf = 0; this._ty = null; this._scroller = null;
+this._getScroller = function () {
+if (self._scroller) { return self._scroller; }
+var hero = document.getElementById('inicio');
+var n = hero ? hero.parentElement : null;
+while (n && n !== document.body && n !== document.documentElement) {
+var oy = getComputedStyle(n).overflowY;
+if ((oy === 'auto' || oy === 'scroll') && n.scrollHeight > n.clientHeight + 2) { self._scroller = n; return n; }
+n = n.parentElement;
+}
+self._scroller = document.scrollingElement || document.documentElement;
+return self._scroller;
+};
+this._span = function () { return Math.max(900, window.innerHeight * 1.8); };
+this._frame = function () {
+self._raf = 0;
+var d = self._target - self._p;
+self._p = Math.abs(d) < 0.0008 ? self._target : self._p + d * 0.16;
+self._update();
+if (self._p !== self._target) { self._kick(); }
+};
+this._kick = function () { if (!self._raf) { self._raf = requestAnimationFrame(self._frame); } };
+this._advance = function (dy) {
+self._target = Math.min(self._max, Math.max(0, self._target + dy / self._span()));
+self._kick();
+};
+this._consume = function (dy) {
+if (self._getScroller().scrollTop > 2) { return false; }
+if ((dy > 0 && self._target < self._max) || (dy < 0 && self._target > 0)) { self._advance(dy); return true; }
+return false;
+};
+this._onWheel = function (e) {
+var k = e.deltaMode === 1 ? 16 : (e.deltaMode === 2 ? window.innerHeight : 1);
+if (self._consume(e.deltaY * k)) { e.preventDefault(); }
+};
+this._onTouchStart = function (e) { self._ty = e.touches && e.touches.length ? e.touches[0].clientY : null; };
+this._onTouchMove = function (e) {
+if (self._ty === null || !e.touches || !e.touches.length) { return; }
+var y = e.touches[0].clientY;
+var dy = (self._ty - y) * 2.2;
+self._ty = y;
+if (self._consume(dy)) { e.preventDefault(); }
+};
+this._onScroll = function () {
+// teclado, barra de desplazamiento…: se devuelve la página arriba y el desplazamiento cuenta como avance
+if (self._target >= self._max) { return; }
+var sc = self._getScroller();
+if (sc.scrollTop > 2) { var top = sc.scrollTop; sc.scrollTop = 0; self._advance(top); }
+};
+this._onClick = function (e) {
+// los enlaces internos (menú, botones) completan la animación para poder saltar a su sección
+var a = e.target && e.target.closest ? e.target.closest('a[href^="#"]') : null;
+if (a && a.getAttribute('href') !== '#inicio') { self._target = self._max; self._p = self._max; self._update(); }
+};
+this._onResize = function () { self._update(); };
+document.addEventListener('wheel', this._onWheel, { passive: false, capture: true });
+document.addEventListener('touchstart', this._onTouchStart, { passive: true, capture: true });
+document.addEventListener('touchmove', this._onTouchMove, { passive: false, capture: true });
+document.addEventListener('scroll', this._onScroll, true);
+document.addEventListener('click', this._onClick, true);
+window.addEventListener('resize', this._onResize);
+if (v) { v.addEventListener('loadedmetadata', this._onResize); v.addEventListener('seeked', this._onResize); }
+if (this._getScroller().scrollTop > 2) { this._target = this._max; this._p = this._max; }
+this._update();
+}
+componentWillUnmount() {
+document.removeEventListener('wheel', this._onWheel, { capture: true });
+document.removeEventListener('touchstart', this._onTouchStart, { capture: true });
+document.removeEventListener('touchmove', this._onTouchMove, { capture: true });
+document.removeEventListener('scroll', this._onScroll, true);
+document.removeEventListener('click', this._onClick, true);
+window.removeEventListener('resize', this._onResize);
+if (this._raf) { cancelAnimationFrame(this._raf); }
+}
+_update() {
+var raw = this._p || 0;
+var mx = this._max || 1;
+var p = Math.min(1, raw);
+var bar = document.getElementById('heroBar');
+if (bar) { var b = raw / mx; bar.style.transform = 'scaleX(' + b.toFixed(4) + ')'; bar.style.opacity = b >= 0.999 ? '0' : '1'; }
+var s = function (a, b, x) { var t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+var shade = document.getElementById('heroShade');
+var copy = document.getElementById('heroCopy');
+var cue = document.getElementById('heroCue');
+if (shade) { shade.style.opacity = String(1 - s(0.03, 0.62, p)); }
+if (cue) { cue.style.opacity = String(1 - s(0.0, 0.12, p)); }
+if (copy) { var on = raw >= 0.995; copy.style.opacity = on ? '1' : '0'; copy.style.transform = on ? 'translateY(0px)' : 'translateY(40px)'; copy.style.pointerEvents = on ? 'auto' : 'none'; }
+var v = document.getElementById('heroVideo');
+if (v && v.duration && isFinite(v.duration)) {
+var t = p * (v.duration - 0.05);
+if (!v.seeking && Math.abs(v.currentTime - t) > 0.03) { v.currentTime = t; }
+}
+}
+renderVals() {
+const angle = this.state.angle;
+const defs = [
+{ a: 0, label: 'Cerradas · 0°', text: 'Cerradas: la cubierta es estanca y el agua de lluvia va al canalón.' },
+{ a: 45, label: 'Sombra · 45°', text: 'Entreabiertas: sombra tamizada y ventilación; el aire caliente escapa por arriba.' },
+{ a: 90, label: 'Abiertas · 90°', text: 'Abiertas: entra la luz y, en invierno, el calor del sol.' }
+];
+const current = defs.find((d) => d.a === angle) || defs[1];
+const base = 'font-size: 15px; font-weight: 600; padding: 12px 18px; border-radius: 999px; cursor: pointer; transition: background .3s, color .3s, border-color .3s; ';
+const modes = defs.map((d) => ({
+label: d.label,
+pressed: d.a === angle ? 'true' : 'false',
+style: base + (d.a === angle ? 'background: #E3A23F; color: #0A0A0B; border: 1px solid #E3A23F;' : 'background: #0F0F11; color: #F2EFE8; border: 1px solid #3A3C40;'),
+pick: () => this.setState({ angle: d.a })
+}));
+const slats = [];
+for (let i = 0; i < 7; i++) {
+slats.push({ x: 34 + i * 56, style: 'transform: rotate(' + (-angle) + 'deg);' });
+}
+return {
+modes: modes,
+slats: slats,
+slatText: current.text,
+slatAlt: 'Esquema de siete lamas giradas ' + angle + ' grados sobre su eje',
+sent: this.state.sent,
+send: () => this.setState({ sent: true })
+};
+}
+}
+</script>
+</body>
+</html>
