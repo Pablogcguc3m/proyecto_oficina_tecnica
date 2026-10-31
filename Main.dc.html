@@ -31,7 +31,7 @@ input,textarea,button{font-family:inherit}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .marquee{display:flex;width:max-content;animation:marquee 38s linear infinite}
 @keyframes shimmer{0%{background-position:0% 50%}100%{background-position:200% 50%}}
-:root{--neon:0 0 .04em #FFFFFF,0 0 .12em #FFF6B0,0 0 .3em #FFE14D,0 0 .6em #FFD000,0 0 1.1em rgba(255,200,0,.55);--neon-max:0 0 .04em #FFFFFF,0 0 .15em #FFF6B0,0 0 .38em #FFE14D,0 0 .75em #FFD000,0 0 1.4em rgba(255,200,0,.7)}
+:root{--neon:0 0 .04em #FFFFFF,0 0 .12em #FFF6B0,0 0 .3em #FFE14D,0 0 .6em #FFD000,0 0 1.1em rgba(255,200,0,.55);--neon-max:0 0 .04em #FFFFFF,0 0 .15em #FFF6B0,0 0 .38em #FFE14D,0 0 .75em #FFD000,0 0 1.4em rgba(255,200,0,.7);--neon-box:0 0 .3em #FFD000,0 0 1em rgba(255,208,0,.5),inset 0 0 .5em rgba(255,208,0,.4);--neon-box-max:0 0 .45em #FFE14D,0 0 1.6em rgba(255,208,0,.7),inset 0 0 .7em rgba(255,208,0,.55)}
 .goldtext{color:#FFFFFF;text-shadow:var(--neon);animation:neonhum 4s ease-in-out infinite}
 @keyframes neonhum{0%,100%{text-shadow:var(--neon)}50%{text-shadow:var(--neon-max)}}
 @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
@@ -46,8 +46,8 @@ input,textarea,button{font-family:inherit}
 .flowline{background:linear-gradient(90deg,#2A2C30,#E3A23F,#2A2C30,#2A2C30);background-size:200% 100%;animation:flow 3.5s linear infinite}
 .field{transition:border-color .3s,box-shadow .3s}
 .field:focus{outline:none;border-color:#E3A23F;box-shadow:0 0 0 4px rgba(227,162,63,.2)}
-.btn{transition:transform .3s,box-shadow .3s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px -10px rgba(227,162,63,.65)}
+.btn{transition:transform .3s,box-shadow .3s;box-shadow:var(--neon-box)}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--neon-box-max)}
 .navlink{transition:color .3s,text-shadow .3s}.navlink:hover{color:#FFFFFF;text-shadow:var(--neon)}
 .slat-demo{transform-box:fill-box;transform-origin:center;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
 .gridbg{background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:64px 64px}
@@ -73,7 +73,7 @@ input,textarea,button{font-family:inherit}
 <a class="navlink" href="#soluciones" style="color: #B9B6AE; text-decoration: none; font-size: 15px; padding: 12px 0;">Soluciones</a>
 <a class="navlink" href="#proceso" style="color: #B9B6AE; text-decoration: none; font-size: 15px; padding: 12px 0;">Proceso</a>
 <a class="navlink" href="#equipo" style="color: #B9B6AE; text-decoration: none; font-size: 15px; padding: 12px 0;">Equipo</a>
-<a class="btn" href="#contacto" style="background: #E3A23F; color: #0A0A0B; text-decoration: none; font-size: 15px; font-weight: 600; padding: 12px 20px; border-radius: 999px;">Pide tu estudio</a>
+<a class="btn" href="#contacto" style="background: rgba(10,10,11,0.55); color: #FFFFFF; text-shadow: var(--neon); border: 1.5px solid #FFE14D; text-decoration: none; font-size: 15px; font-weight: 600; padding: 12px 20px; border-radius: 999px;">Pide tu estudio</a>
 </div>
 </nav>
 </header>
@@ -93,7 +93,7 @@ input,textarea,button{font-family:inherit}
 <h1 style="margin: 0; font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 700; font-size: clamp(56px, 8vw, 112px); line-height: 0.95; letter-spacing: -3px;">Domina el <span class="goldtext" style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -1px;">sol.</span></h1>
 <p style="margin: 0; font-size: 20px; line-height: 1.6; color: #D6D2C9; max-width: 560px;">Lamas orientables que se abren, se cierran y se ajustan a la hora del día. Calculadas para tu orientación, tu clima y tu terraza.</p>
 <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-<a class="btn" href="#contacto" style="background: #E3A23F; color: #0A0A0B; text-decoration: none; font-weight: 600; font-size: 17px; padding: 16px 28px; border-radius: 999px;">Pide un estudio de tu terraza</a>
+<a class="btn" href="#contacto" style="background: rgba(10,10,11,0.55); color: #FFFFFF; text-shadow: var(--neon); border: 1.5px solid #FFE14D; text-decoration: none; font-weight: 600; font-size: 17px; padding: 16px 28px; border-radius: 999px;">Pide un estudio de tu terraza</a>
 <a href="#soluciones" style="color: #F2EFE8; text-decoration: none; font-weight: 500; font-size: 17px; padding: 15px 26px; border-radius: 999px; border: 1px solid #5A5C60; background: rgba(10,10,11,0.4);">Ver soluciones</a>
 </div>
 </div>
@@ -320,7 +320,7 @@ input,textarea,button{font-family:inherit}
 <div style="flex: 1 1 200px; display: flex; flex-direction: column; gap: 8px;"><label for="superficie" style="font-size: 14px; font-weight: 500; color: #B9B6AE;">Superficie aproximada (m²)</label><input class="field" id="superficie" type="number" min="1" style="font-size: 16px; padding: 14px; border-radius: 12px; border: 1px solid #2E3034; background: #0A0A0B; color: #F2EFE8;"></div>
 </div>
 <div style="display: flex; flex-direction: column; gap: 8px;"><label for="mensaje" style="font-size: 14px; font-weight: 500; color: #B9B6AE;">Qué te gustaría conseguir</label><textarea class="field" id="mensaje" rows="4" style="font-size: 16px; padding: 14px; border-radius: 12px; border: 1px solid #2E3034; background: #0A0A0B; color: #F2EFE8; resize: vertical;"></textarea></div>
-<button class="btn" type="button" onClick="{{send}}" style="align-self: flex-start; background: #E3A23F; color: #0A0A0B; border: none; font-size: 17px; font-weight: 600; padding: 16px 28px; border-radius: 999px; cursor: pointer;">Enviar solicitud</button>
+<button class="btn" type="button" onClick="{{send}}" style="align-self: flex-start; background: rgba(10,10,11,0.55); color: #FFFFFF; text-shadow: var(--neon); border: 1.5px solid #FFE14D; font-size: 17px; font-weight: 600; padding: 16px 28px; border-radius: 999px; cursor: pointer;">Enviar solicitud</button>
 <sc-if value="{{sent}}" hint-placeholder-val="{{ false }}"><p role="status" style="margin: 0; font-size: 16px; color: #FFFFFF; text-shadow: var(--neon);">Gracias: te escribiremos para concertar la visita.</p></sc-if>
 </form>
 </div>
@@ -466,7 +466,7 @@ const base = 'font-size: 15px; font-weight: 600; padding: 12px 18px; border-radi
 const modes = defs.map((d) => ({
 label: d.label,
 pressed: d.a === angle ? 'true' : 'false',
-style: base + (d.a === angle ? 'background: #E3A23F; color: #0A0A0B; border: 1px solid #E3A23F;' : 'background: #0F0F11; color: #F2EFE8; border: 1px solid #3A3C40;'),
+style: base + (d.a === angle ? 'background: rgba(10,10,11,0.55); color: #FFFFFF; text-shadow: var(--neon); border: 1px solid #FFE14D; box-shadow: var(--neon-box);' : 'background: #0F0F11; color: #F2EFE8; border: 1px solid #3A3C40;'),
 pick: () => this.setState({ angle: d.a })
 }));
 const slats = [];
